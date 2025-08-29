@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>百分比与小数转换工具</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            color: #333;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        
+        .container {
+            background-color: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            width: 100%;
+            max-width: 500px;
+            padding: 30px;
+            margin: 20px 0;
+        }
+        
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 20px;
+            font-size: 28px;
+        }
+        
+        .description {
+            text-align: center;
+            margin-bottom: 25px;
+            color: #7f8c8d;
+            line-height: 1.5;
+        }
+        
+        .input-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #34495e;
+        }
+        
+        input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+        
+        input:focus {
+            border-color: #3498db;
+            outline: none;
+        }
+        
+        .buttons {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        
+        button {
+            flex: 1;
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            background-color: #3498db;
+            color: white;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+        
+        button:hover {
+            background-color: #2980b9;
+        }
+        
+        button:active {
+            transform: scale(0.98);
+        }
+        
+        #clearBtn {
+            background-color: #e74c3c;
+        }
+        
+        #clearBtn:hover {
+            background-color: #c0392b;
+        }
+        
+        .result {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid #2ecc71;
+            margin-top: 20px;
+        }
+        
+        .result h3 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+        
+        #resultText {
+            font-size: 18px;
+            color: #27ae60;
+            font-weight: 600;
+        }
+        
+        .examples {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+        }
+        
+        .examples h3 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+        }
+        
+        .example-item {
+            margin-bottom: 8px;
+            color: #7f8c8d;
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 30px;
+            color: white;
+            font-size: 14px;
+        }
+        
+        @media (max-width: 600px) {
+            .container {
+                padding: 20px;
+            }
+            
+            .buttons {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>百分比与小数转换工具</h1>
+        <p class="description">这是一个简单易用的在线工具，帮助您在百分比和小数之间进行快速转换。</p>
+        
+        <div class="input-group">
+            <label for="inputValue">输入值：</label>
+            <input type="text" id="inputValue" placeholder="请输入百分比或小数...">
+        </div>
+        
+        <div class="buttons">
+            <button id="toDecimal">转换为小数</button>
+            <button id="toPercentage">转换为百分比</button>
+            <button id="clearBtn">清除</button>
+        </div>
+        
+        <div class="result">
+            <h3>转换结果：</h3>
+            <p id="resultText">请输入值并选择转换类型</p>
+        </div>
+        
+        <div class="examples">
+            <h3>使用示例：</h3>
+            <p class="example-item">• 转换为小数：输入 25% → 输出 0.25</p>
+            <p class="example-item">• 转换为百分比：输入 0.75 → 输出 75%</p>
+            <p class="example-item">• 也可以直接输入数字而不带百分号：输入 50 → 转换为百分比：5000%</p>
+        </div>
+    </div>
+    
+    <footer>
+        <p>© 2023 百分比与小数转换工具 | 设计精美，使用简单</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const inputValue = document.getElementById('inputValue');
+            const toDecimalBtn = document.getElementById('toDecimal');
+            const toPercentageBtn = document.getElementById('toPercentage');
+            const clearBtn = document.getElementById('clearBtn');
+            const resultText = document.getElementById('resultText');
+            
+            // 转换为小数
+            toDecimalBtn.addEventListener('click', function() {
+                let value = inputValue.value.trim();
+                
+                if (value === '') {
+                    resultText.textContent = '请输入一个值';
+                    resultText.style.color = '#e74c3c';
+                    return;
+                }
+                
+                // 移除百分号并转换为数字
+                if (value.includes('%')) {
+                    value = value.replace('%', '');
+                }
+                
+                const num = parseFloat(value);
+                
+                if (isNaN(num)) {
+                    resultText.textContent = '请输入有效的数字';
+                    resultText.style.color = '#e74c3c';
+                    return;
+                }
+                
+                const decimal = num / 100;
+                resultText.textContent = `结果：${decimal}`;
+                resultText.style.color = '#27ae60';
+            });
+            
+            // 转换为百分比
+            toPercentageBtn.addEventListener('click', function() {
+                let value = inputValue.value.trim();
+                
+                if (value === '') {
+                    resultText.textContent = '请输入一个值';
+                    resultText.style.color = '#e74c3c';
+                    return;
+                }
+                
+                // 如果输入包含百分号，先移除
+                if (value.includes('%')) {
+                    value = value.replace('%', '');
+                }
+                
+                const num = parseFloat(value);
+                
+                if (isNaN(num)) {
+                    resultText.textContent = '请输入有效的数字';
+                    resultText.style.color = '#e74c3c';
+                    return;
+                }
+                
+                const percentage = num * 100;
+                resultText.textContent = `结果：${percentage}%`;
+                resultText.style.color = '#27ae60';
+            });
+            
+            // 清除输入和结果
+            clearBtn.addEventListener('click', function() {
+                inputValue.value = '';
+                resultText.textContent = '请输入值并选择转换类型';
+                resultText.style.color = '#27ae60';
+            });
+            
+            // 按Enter键触发转换
+            inputValue.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    toDecimalBtn.click();
+                }
+            });
+        });
+    </script>
+</body>
+</html>
