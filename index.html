@@ -240,43 +240,6 @@
                 <p>百分数小数互换</p>
             </a>
         </div>
-        
-        <div class="instructions">
-            <h2>如何添加和修改工具卡片</h2>
-            <ol>
-                <li>复制下面的代码片段</li>
-                <li>粘贴到工具网格中(在<span class="highlight">&lt;div class="tools-grid"&gt;</span>内)</li>
-                <li>修改工具名称、描述、图标、分类和跳转URL</li>
-            </ol>
-            
-            <div class="code-example">
-&lt;a href="<span class="highlight">https://您的网址</span>" class="tool-card" data-name="<span class="highlight">工具名称</span>" data-category="<span class="highlight">分类</span>"&gt;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&lt;i class="<span class="highlight">fas fa-icon-name</span>"&gt;&lt;/i&gt;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&lt;h3&gt;<span class="highlight">工具名称</span>&lt;/h3&gt;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&gt;<span class="highlight">工具描述</span>&lt;/p&gt;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&lt;span class="url-hint"&gt;点击跳转: <span class="highlight">您的网址</span>&lt;/span&gt;<br>
-&lt;/a&gt;
-            </div>
-            
-            <p><strong>提示：</strong></p>
-            <ul>
-                <li>使用任何Font Awesome图标，将"fa-icon-name"替换为所需的图标类名</li>
-                <li>修改<span class="highlight">href</span>属性设置跳转链接</li>
-                <li>修改<span class="highlight">data-name</span>和<span class="highlight">data-category</span>属性以便搜索功能正常工作</li>
-                <li>URL提示文本会自动显示域名部分，您也可以自定义显示文本</li>
-                <li>使用相对路径时，只需填写路径部分，如: <span class="highlight">"/tools/image-compressor"</span></li>
-            </ul>
-            
-            <h3>相对路径示例</h3>
-            <div class="code-example">
-&lt;a href="<span class="highlight">/tools/calculator</span>" class="tool-card" data-name="计算器" data-category="工具"&gt;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&lt;i class="<span class="highlight">fas fa-calculator</span>"&gt;&lt;/i&gt;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&lt;h3&gt;计算器&lt;/h3&gt;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&gt;进行基本和科学计算&lt;/p&gt;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&lt;span class="url-hint"&gt;点击跳转: 本站计算器工具&lt;/span&gt;<br>
-&lt;/a&gt;
-            </div>
-        </div>
     </div>
 
     <script>
