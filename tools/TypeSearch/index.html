@@ -907,7 +907,7 @@
                 <div class="upload-area" id="dropArea">
                     <i class="fas fa-cloud-upload-alt"></i>
                     <h4>点击或拖拽文件到此处上传</h4>
-                    <p>支持.xlsx格式文件，文件应包含"type"和"名称"两列</p>
+                    <p>支持.xlsx格式文件，文件应包含"type"和"指标名称"两列</p>
                     <input type="file" id="fileInput" accept=".xlsx, .xls">
                 </div>
                 
@@ -1343,7 +1343,7 @@ type: 1000 - 有效（空格不影响）
                 const foundItem = excelData.find(item => String(item.type) === num);
                 
                 if (foundItem) {
-                    const nameValue = foundItem.名称 || foundItem.name || '';
+                    const nameValue = foundItem.指标名称 || foundItem.name || '';
                     
                     if (nameValue.trim() === '') {
                         // 名称为空的结果
