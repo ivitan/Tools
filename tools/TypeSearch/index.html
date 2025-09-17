@@ -923,7 +923,7 @@
         <!-- Excel数据查询工具 -->
         <div id="excel-tool" class="tab-content active">
             <div class="upload-section">
-                <h3 class="section-title"><i class="fas fa-upload"></i> 上传Excel文件</h3>
+                <h4 class="section-title"><i class="fas fa-upload"></i> 上传Excel文件</h4>
 
                 <div class="upload-area" id="dropArea">
                     <i class="fas fa-cloud-upload-alt"></i>
@@ -1575,11 +1575,11 @@ type: 1000 - 有效（空格不影响）
             let statusMessages = [];
 
             if (emptyItems.length > 0) {
-                statusMessages.push(`以下数字名称为空: ${emptyItems.join(', ')}`);
+                statusMessages.push(`名称为空: ${emptyItems.join(', ')}`);
             }
 
             if (notFoundItems.length > 0) {
-                statusMessages.push(`以下数字未找到: ${notFoundItems.join(', ')}`);
+                statusMessages.push(`没有找到: ${notFoundItems.join(', ')}`);
             }
 
             if (statusMessages.length > 0) {
